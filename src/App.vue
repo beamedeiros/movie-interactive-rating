@@ -18,9 +18,25 @@ function updateRating(movieIndex, rating) {
         :key="movie.id"
       >
         <div class="movie-item-image-wrapper">
+          <div class="movie-item-star-wrapper">
+            <StarIcon
+              class="movie-item-star-rating-icon"
+              :class="[movie.rating ? 'text-yellow-500' : 'text-gray-500']"
+            />
+            <div class="movie-item-star-content-wrapper">
+              <span
+                v-if="movie.rating"
+                class="movie-item-star-content-rating-rated"
+              >
+                {{ movie.rating }}
+              </span>
+              <span v-else class="movie-item-star-content-rating-not-rated">
+                -
+              </span>
+            </div>
+          </div>
           <img :src="movie.image" class="movie-item-image" alt="" />
         </div>
-
         <div class="movie-item-content-wrapper">
           <div class="movie-item-title-wrapper">
             <h3 class="movie-item-title">{{ movie.name }}</h3>
